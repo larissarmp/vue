@@ -2360,11 +2360,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            columns: [{ title: '#', field: 'id', sortable: true, colStyle: 'width: 50px;' }, { title: 'name', field: 'name', sortable: true }, { title: 'Actions', tdComp: __WEBPACK_IMPORTED_MODULE_1__dtmodules_DatatableActions___default.a, visible: true, thClass: 'text-right', tdClass: 'text-right', colStyle: 'width: 130px;' }],
+            columns: [{ title: '#', field: 'id', sortable: true, colStyle: 'width: 50px;' }, { title: 'Usuário do Arquivo', field: 'user', tdComp: __WEBPACK_IMPORTED_MODULE_2__dtmodules_DatatableSingle___default.a }, { title: 'Nome', field: 'name_file', sortable: true }, { title: 'Tamanho', field: 'size_file', sortable: true }, { title: 'Actions', tdComp: __WEBPACK_IMPORTED_MODULE_1__dtmodules_DatatableActions___default.a, visible: true, thClass: 'text-right', tdClass: 'text-right', colStyle: 'width: 130px;' }],
             query: { sort: 'id', order: 'desc' },
             xprops: {
-                module: 'GroupIndex',
-                route: 'group'
+                module: 'UploadFileIndex',
+                route: 'upload'
             }
         };
     },
@@ -2376,7 +2376,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.resetState();
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])('GroupIndex', ['data', 'total', 'loading', 'relationships'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])('UploadFileIndex', ['data', 'total', 'loading', 'relationships'])),
     watch: {
         query: {
             handler: function handler(query) {
@@ -2386,7 +2386,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             deep: true
         }
     },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('GroupIndex', ['fetchData', 'setQuery', 'resetState']))
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('UploadFileIndex', ['fetchData', 'setQuery', 'resetState']))
 });
 
 /***/ }),
@@ -3997,7 +3997,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -23925,13 +23925,13 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("label", { attrs: { for: "group" } }, [
+                          _c("label", { attrs: { for: "user-file" } }, [
                             _vm._v("Grupo")
                           ]),
                           _vm._v(" "),
                           _c("v-select", {
                             attrs: {
-                              name: "group",
+                              name: "user-file",
                               label: "name",
                               value: _vm.item.group,
                               options: _vm.companiesAll
@@ -32163,7 +32163,7 @@ function initialState() {
     return {
         all: [],
         relationships: {
-            'user-file': 'name'
+            'user': 'name'
         },
         query: {},
         loading: false
@@ -32267,7 +32267,7 @@ function initialState() {
     return {
         item: {
             id: null,
-            name_user: null,
+            user: null,
             name_file: null,
             url_file: null,
             size_file: null
@@ -32304,7 +32304,7 @@ var actions = {
                 params.name_user_id = params.name_user.id;
             }
 
-            axios.post('/api/v1/employees', params).then(function (response) {
+            axios.post('/api/v1/user-file', params).then(function (response) {
                 commit('resetState');
                 resolve();
             }).catch(function (error) {
@@ -32333,7 +32333,7 @@ var actions = {
                 params.name_user_id = params.name_user.id;
             }
 
-            axios.put('/api/v1/employees/' + params.id, params).then(function (response) {
+            axios.put('/api/v1/user-file/' + params.id, params).then(function (response) {
                 commit('setItem', response.data.data);
                 resolve();
             }).catch(function (error) {
@@ -32365,10 +32365,10 @@ var actions = {
             commit('setCompaniesAll', response.data.data);
         });
     },
-    setCompany: function setCompany(_ref5, value) {
+    setUser: function setUser(_ref5, value) {
         var commit = _ref5.commit;
 
-        commit('setCompany', value);
+        commit('setUser', value);
     },
     setName_file: function setName_file(_ref6, value) {
         var commit = _ref6.commit;
@@ -32396,8 +32396,8 @@ var mutations = {
     setItem: function setItem(state, item) {
         state.item = item;
     },
-    setCompany: function setCompany(state, value) {
-        state.item.company = value;
+    setUser: function setUser(state, value) {
+        state.item.user = value;
     },
     setName_file: function setName_file(state, value) {
         state.item.name_file = value;

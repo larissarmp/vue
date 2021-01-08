@@ -61,13 +61,15 @@ export default {
         return {
             columns: [
                 { title: '#', field: 'id', sortable: true, colStyle: 'width: 50px;' },
-                { title: 'name', field: 'name', sortable: true },
+                { title: 'Usuário do Arquivo', field: 'user', tdComp: DatatableSingle },
+                { title: 'Nome', field: 'name_file', sortable: true },
+                { title: 'Tamanho', field: 'size_file', sortable: true },
                 { title: 'Actions', tdComp: DatatableActions, visible: true, thClass: 'text-right', tdClass: 'text-right', colStyle: 'width: 130px;' }
             ],
             query: { sort: 'id', order: 'desc' },
             xprops: {
-                module: 'GroupIndex',
-                route: 'group'
+                module: 'UploadFileIndex',
+                route: 'upload'
             }
         }
     },
@@ -79,7 +81,7 @@ export default {
         this.resetState()
     },
     computed: {
-        ...mapGetters('GroupIndex', ['data', 'total', 'loading', 'relationships']),
+        ...mapGetters('UploadFileIndex', ['data', 'total', 'loading', 'relationships']),
     },
     watch: {
         query: {
@@ -90,7 +92,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('GroupIndex', ['fetchData', 'setQuery', 'resetState']),
+        ...mapActions('UploadFileIndex', ['fetchData', 'setQuery', 'resetState']),
     }
 }
 </script>

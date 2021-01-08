@@ -15,4 +15,9 @@ class UploadFile extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function user()
+    {
+        return $this->belongsTo(UserFile::class, 'user_file_id')->withTrashed();
+    }
 }

@@ -21,9 +21,9 @@
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="group">Grupo</label>
+                                    <label for="user-file">Grupo</label>
                                     <v-select
-                                            name="group"
+                                            name="user-file"
                                             label="name"
                                             @input="updateGroup"
                                             :value="item.group"

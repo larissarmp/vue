@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function index()
     {
-        return new UploadFileResource(File::with(['userFile'])->get());
+        return new UploadFileResource(UploadFile::with(['userFile'])->get());
     }
 
     public function show($id)

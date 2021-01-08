@@ -11,21 +11,22 @@ class UserFileController extends Controller
 {
     public function index()
     {
-        return new UserFileResource(Group::with(['group'])->get());
+        return new UserFileResource(UserFile::with(['group'])->get());
         
     }
 
     public function show($id)
     {
-        $userFile = UserFile::with(['group'])->findOrFail($id);
-        return new UserFileResource($userFile);
+        $user_file = UserFile::with(['group'])->findOrFail($id);
+        
+        return new UserFileResource($user_file);
     }
 
     public function store(Request $request)
     {
-        $userFile = UserFile::create($request->all());
+        $user_file = UserFile::create($request->all());
         
-        return (new UserFileResource($userFile))
+        return (new UserFileResource($user_file))
             ->response()
             ->setStatusCode(201);
     }

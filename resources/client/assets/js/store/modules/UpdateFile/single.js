@@ -2,7 +2,7 @@ function initialState() {
     return {
         item: {
             id: null,
-            name_user: null,
+            user: null,
             name_file: null,
             url_file: null,
             size_file: null,
@@ -29,7 +29,7 @@ const actions = {
                 params.name_user_id = params.name_user.id
             }
 
-            axios.post('/api/v1/employees', params)
+            axios.post('/api/v1/user-file', params)
                 .then(response => {
                     commit('resetState')
                     resolve()
@@ -60,7 +60,7 @@ const actions = {
                 params.name_user_id = params.name_user.id
             }
 
-            axios.put('/api/v1/employees/' + params.id, params)
+            axios.put('/api/v1/user-file/' + params.id, params)
                 .then(response => {
                     commit('setItem', response.data.data)
                     resolve()
@@ -95,8 +95,8 @@ const actions = {
                 commit('setCompaniesAll', response.data.data)
             })
     },
-    setCompany({ commit }, value) {
-        commit('setCompany', value)
+    setUser({ commit }, value) {
+        commit('setUser', value)
     },
     setName_file({ commit }, value) {
         commit('setName_file', value)
@@ -116,8 +116,8 @@ const mutations = {
     setItem(state, item) {
         state.item = item
     },
-    setCompany(state, value) {
-        state.item.company = value
+    setUser(state, value) {
+        state.item.user = value
     },
     setName_file(state, value) {
         state.item.name_file = value

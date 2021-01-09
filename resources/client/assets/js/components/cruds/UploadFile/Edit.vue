@@ -21,12 +21,12 @@
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="user-file">Usuário do arquivo</label>
+                                    <label for="user">Usuário do arquivo</label>
                                     <v-select
-                                            name="user-file"
+                                            name="user"
                                             label="name"
-                                            @input="updateUser_file"
-                                            :value="item.user-file"
+                                            @input="updateUser"
+                                            :value="item.user"
                                             :options="companiesAll"
                                             />
                                 </div>
@@ -90,16 +90,10 @@ export default {
     destroyed() {
         this.resetState()
     },
-    watch: {
-        "$route.params.id": function() {
-            this.resetState()
-            this.fetchData(this.$route.params.id)
-        }
-    },
     methods: {
-        ...mapActions('UploadFileSingle', ['fetchData',  'setUser_file', 'setName_file', 'setSize_file',]),
-        updateUser_file(value) {
-            this.setUse_file(value)
+        ...mapActions('UploadFileSingle', ['fetchData',  'setUser', 'setName_file', 'setSize_file',]),
+        updateUser(value) {
+            this.setUser(value)
         },
         updateName_file(e) {
             this.setName_file(e.target.value)

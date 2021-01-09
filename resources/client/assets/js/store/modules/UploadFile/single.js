@@ -25,11 +25,11 @@ const actions = {
 
         return new Promise((resolve, reject) => {
             let params = _.cloneDeep(state.item)
-            if (! _.isEmpty(params.name_user)) {
-                params.name_user_id = params.name_user.id
+            if (! _.isEmpty(params.user)) {
+                params.user_id = params.user.id
             }
 
-            axios.post('/api/v1/user-file', params)
+            axios.post('/api/v1/upload', params)
                 .then(response => {
                     commit('resetState')
                     resolve()
@@ -56,11 +56,11 @@ const actions = {
 
         return new Promise((resolve, reject) => {
             let params = _.cloneDeep(state.item)
-            if (! _.isEmpty(params.name_user)) {
-                params.name_user_id = params.name_user.id
+            if (! _.isEmpty(params.user)) {
+                params.user_id = params.user.id
             }
 
-            axios.put('/api/v1/user-file/' + params.id, params)
+            axios.put('/api/v1/upload/' + params.id, params)
                 .then(response => {
                     commit('setItem', response.data.data)
                     resolve()
@@ -82,7 +82,7 @@ const actions = {
         })
     },
     fetchData({ commit, dispatch }, id) {
-        axios.get('/api/v1/user-file/' + id)
+        axios.get('/api/v1/upload/' + id)
             .then(response => {
                 commit('setItem', response.data.data)
             })
@@ -90,7 +90,7 @@ const actions = {
         dispatch('fetchCompaniesAll')
     },
     fetchCompaniesAll({ commit }) {
-        axios.get('/api/v1/user-file')
+        axios.get('/api/v1/upload')
             .then(response => {
                 commit('setCompaniesAll', response.data.data)
             })

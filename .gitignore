@@ -1,2 +1,5 @@
 /node_modules
 /vendor
+resources/client/assets/js/components/cruds/UploadFile/Index.vue
+public/mix-manifest.json
+public/client/js/app.js

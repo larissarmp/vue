@@ -2112,6 +2112,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2122,26 +2136,32 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])('GroupSingle', ['item', 'loading'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapGetters"])('UploadFileSingle', ['item', 'loading', 'companiesAll'])),
     created: function created() {
-        // Code ...
+        this.fetchCompaniesAll();
     },
     destroyed: function destroyed() {
         this.resetState();
     },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('GroupSingle', ['storeData', 'resetState', 'setName']), {
-        updateName: function updateName(e) {
-            this.setName(e.target.value);
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('UploadFileSingle', ['storeData', 'resetState', 'setUser', 'setName_file', 'setUrl_file', 'fetchCompaniesAll']), {
+        updateUser: function updateUser(value) {
+            this.setUser(value);
         },
-        updateDescription: function updateDescription(e) {
-            this.setDescription(e.target.value);
+        updateName_file: function updateName_file(e) {
+            this.setName_file(e.target.value);
+        },
+        updateSize_file: function updateSize_file(e) {
+            this.setSize_file(e.target.value);
+        },
+        updateUrl_file: function updateUrl_file(e) {
+            this.setUrl_file(e.target.value);
         },
         submitForm: function submitForm() {
             var _this = this;
 
             this.storeData().then(function () {
-                _this.$router.push({ name: 'group.index' });
+                _this.$router.push({ name: 'upload.index' });
                 _this.$eventHub.$emit('create-success');
             }).catch(function (error) {
                 console.error(error);
@@ -2252,15 +2272,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.resetState();
     },
 
-    watch: {
-        "$route.params.id": function $routeParamsId() {
-            this.resetState();
-            this.fetchData(this.$route.params.id);
-        }
-    },
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('UploadFileSingle', ['fetchData', 'setUser_file', 'setName_file', 'setSize_file']), {
-        updateUser_file: function updateUser_file(value) {
-            this.setUse_file(value);
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["mapActions"])('UploadFileSingle', ['fetchData', 'setUser', 'setName_file', 'setSize_file']), {
+        updateUser: function updateUser(value) {
+            this.setUser(value);
         },
         updateName_file: function updateName_file(e) {
             this.setName_file(e.target.value);
@@ -3817,7 +3831,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -3832,7 +3846,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -26262,18 +26276,18 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("label", { attrs: { for: "user-file" } }, [
+                          _c("label", { attrs: { for: "user" } }, [
                             _vm._v("Usuário do arquivo")
                           ]),
                           _vm._v(" "),
                           _c("v-select", {
                             attrs: {
-                              name: "user-file",
+                              name: "user",
                               label: "name",
-                              value: _vm.item.user - _vm.file,
+                              value: _vm.item.user,
                               options: _vm.companiesAll
                             },
-                            on: { input: _vm.updateUser_file }
+                            on: { input: _vm.updateUser }
                           })
                         ],
                         1
@@ -26379,117 +26393,7 @@ if (false) {
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6fe7b551\",\"hasScoped\":true,\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/client/assets/js/components/cruds/UploadFile/Create.vue":
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "content-wrapper", staticStyle: { "min-height": "960px" } },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("section", { staticClass: "content" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-12" }, [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submitForm($event)
-                  }
-                }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "box" },
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "box-body" },
-                      [_c("back-buttton")],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("bootstrap-alert"),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "box-body" }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("label", { attrs: { for: "name" } }, [
-                          _vm._v("Name")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "name",
-                            placeholder: "Enter Name"
-                          },
-                          domProps: { value: _vm.item.name },
-                          on: { input: _vm.updateName }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "box-footer" },
-                      [
-                        _c(
-                          "vue-button-spinner",
-                          {
-                            staticClass: "btn btn-primary btn-sm",
-                            attrs: {
-                              isLoading: _vm.loading,
-                              disabled: _vm.loading
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Save\n                            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ]
-            )
-          ])
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("Grupo")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Create")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function(){},staticRenderFns:[]}
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
@@ -27747,7 +27651,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("Grupo")])
+      _c("h1", [_vm._v("Upload de Arquivos")])
     ])
   },
   function() {
@@ -27755,7 +27659,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("List")])
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Lista")])
     ])
   },
   function() {
@@ -31132,8 +31036,8 @@ var routes = [{ path: '/change-password', component: __WEBPACK_IMPORTED_MODULE_2
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__modules_Employees_single__ = __webpack_require__("./resources/client/assets/js/store/modules/Employees/single.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__modules_Group__ = __webpack_require__("./resources/client/assets/js/store/modules/Group/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__modules_Group_single__ = __webpack_require__("./resources/client/assets/js/store/modules/Group/single.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modules_UpdateFile__ = __webpack_require__("./resources/client/assets/js/store/modules/UpdateFile/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_UpdateFile_single__ = __webpack_require__("./resources/client/assets/js/store/modules/UpdateFile/single.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__modules_UploadFile__ = __webpack_require__("./resources/client/assets/js/store/modules/UploadFile/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__modules_UploadFile_single__ = __webpack_require__("./resources/client/assets/js/store/modules/UploadFile/single.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__modules_UserFile__ = __webpack_require__("./resources/client/assets/js/store/modules/UserFile/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__modules_UserFile_single__ = __webpack_require__("./resources/client/assets/js/store/modules/UserFile/single.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__modules_alert__ = __webpack_require__("./resources/client/assets/js/store/modules/alert.js");
@@ -31177,8 +31081,8 @@ var debug = "development" !== 'production';
         EmployeesSingle: __WEBPACK_IMPORTED_MODULE_9__modules_Employees_single__["a" /* default */],
         GroupIndex: __WEBPACK_IMPORTED_MODULE_10__modules_Group__["a" /* default */],
         GroupSingle: __WEBPACK_IMPORTED_MODULE_11__modules_Group_single__["a" /* default */],
-        UpdateFileIndex: __WEBPACK_IMPORTED_MODULE_12__modules_UpdateFile__["a" /* default */],
-        UpdateFileSingle: __WEBPACK_IMPORTED_MODULE_13__modules_UpdateFile_single__["a" /* default */],
+        UploadFileIndex: __WEBPACK_IMPORTED_MODULE_12__modules_UploadFile__["a" /* default */],
+        UploadFileSingle: __WEBPACK_IMPORTED_MODULE_13__modules_UploadFile_single__["a" /* default */],
         UserFileIndex: __WEBPACK_IMPORTED_MODULE_14__modules_UserFile__["a" /* default */],
         UserFileSingle: __WEBPACK_IMPORTED_MODULE_15__modules_UserFile_single__["a" /* default */]
 
@@ -32155,7 +32059,7 @@ var mutations = {
 
 /***/ }),
 
-/***/ "./resources/client/assets/js/store/modules/UpdateFile/index.js":
+/***/ "./resources/client/assets/js/store/modules/UploadFile/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32198,7 +32102,7 @@ var actions = {
 
         commit('setLoading', true);
 
-        axios.get('/api/v1/user-file').then(function (response) {
+        axios.get('/api/v1/upload').then(function (response) {
             commit('setAll', response.data.data);
         }).catch(function (error) {
             message = error.response.data.message || error.message;
@@ -32212,7 +32116,7 @@ var actions = {
         var commit = _ref2.commit,
             state = _ref2.state;
 
-        axios.delete('/api/v1/user-file/' + id).then(function (response) {
+        axios.delete('/api/v1/upload/' + id).then(function (response) {
             commit('setAll', state.all.filter(function (item) {
                 return item.id != id;
             }));
@@ -32259,7 +32163,7 @@ var mutations = {
 
 /***/ }),
 
-/***/ "./resources/client/assets/js/store/modules/UpdateFile/single.js":
+/***/ "./resources/client/assets/js/store/modules/UploadFile/single.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -32300,11 +32204,11 @@ var actions = {
 
         return new Promise(function (resolve, reject) {
             var params = _.cloneDeep(state.item);
-            if (!_.isEmpty(params.name_user)) {
-                params.name_user_id = params.name_user.id;
+            if (!_.isEmpty(params.user)) {
+                params.user_id = params.user.id;
             }
 
-            axios.post('/api/v1/user-file', params).then(function (response) {
+            axios.post('/api/v1/upload', params).then(function (response) {
                 commit('resetState');
                 resolve();
             }).catch(function (error) {
@@ -32329,11 +32233,11 @@ var actions = {
 
         return new Promise(function (resolve, reject) {
             var params = _.cloneDeep(state.item);
-            if (!_.isEmpty(params.name_user)) {
-                params.name_user_id = params.name_user.id;
+            if (!_.isEmpty(params.user)) {
+                params.user_id = params.user.id;
             }
 
-            axios.put('/api/v1/user-file/' + params.id, params).then(function (response) {
+            axios.put('/api/v1/upload/' + params.id, params).then(function (response) {
                 commit('setItem', response.data.data);
                 resolve();
             }).catch(function (error) {
@@ -32352,7 +32256,7 @@ var actions = {
         var commit = _ref3.commit,
             dispatch = _ref3.dispatch;
 
-        axios.get('/api/v1/user-file/' + id).then(function (response) {
+        axios.get('/api/v1/upload/' + id).then(function (response) {
             commit('setItem', response.data.data);
         });
 
@@ -32361,7 +32265,7 @@ var actions = {
     fetchCompaniesAll: function fetchCompaniesAll(_ref4) {
         var commit = _ref4.commit;
 
-        axios.get('/api/v1/user-file').then(function (response) {
+        axios.get('/api/v1/upload').then(function (response) {
             commit('setCompaniesAll', response.data.data);
         });
     },

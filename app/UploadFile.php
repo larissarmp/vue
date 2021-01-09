@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class UploadFile extends Model
 {
     protected $fillable = [
-        'id_user_file',                
+        'user_file_id',                
         'name_file',
         'name_user',
         'url_file',
@@ -16,7 +16,7 @@ class UploadFile extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function user()
+    public function userFile()
     {
         return $this->belongsTo(UserFile::class, 'user_file_id')->withTrashed();
     }

@@ -8,16 +8,16 @@ use App\Http\Resources\UploadFile as UploadFileResource;
 use App\UploadFile;
 use Illuminate\Http\UploadedFile;
 
-class FileController extends Controller
+class UploadFileController extends Controller
 {
     public function index()
     {
-        return new UploadFileResource(UploadFile::with(['userFile'])->get());
+        return new UploadFileResource(Group::with(['userFile'])->get());
     }
 
     public function show($id)
     {
-        $userFile = UploadFile::with(['userFile'])->findOrFail($id);
+        $userFile = Group::with(['userFile'])->findOrFail($id);
         return new UploadFileResource($userFile);
     }
   
@@ -26,10 +26,14 @@ class FileController extends Controller
     {
        $data = $request->all();
         
-         if ($request->file('pdf')->isValid()){
-            $pdf = $request->pdf->store('pdf');
-            $data['pdf'] = $pdf;
-            
+         if ($request->file('url_size')->isValid()){
+
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->pdf->extension();
+            $nameFile = "{$name}.{$extension}";
+            $pdf = $request->pdf->storeAs('url_size',$nameFile);
+            $data['url_size'] = $pdf;
+
         } 
         $result = UploadFile::create($data);
 
@@ -45,12 +49,10 @@ class FileController extends Controller
         $data = $request->all();
 
         if ($request->pdf && $request->pdf->isValid()) {
-            if (Storage::exists($pdfFile->pdf))
-                Storage::delete($pdfFile->pdf);
-
-            $nameFile = Str::of($request->title)->slug('-') . '.' .$request->pdf->getClientOriginalExtension();
-
-            $pdf = $request->pdf->storeAs('pdf', $nameFile);
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->pdf->extension();
+            $nameFile = "{$name}.{$extension}";
+            $pdf = $request->pdf->store('pdf', $nameFile);
             $data['pdf'] = $pdf;
         }
 

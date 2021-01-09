@@ -11,8 +11,8 @@ import EmployeesIndex from './modules/Employees'
 import EmployeesSingle from './modules/Employees/single'
 import GroupIndex from './modules/Group'
 import GroupSingle from './modules/Group/single'
-import UpdateFileIndex from './modules/UpdateFile'
-import UpdateFileSingle from './modules/UpdateFile/single'
+import UploadFileIndex from './modules/UploadFile'
+import UploadFileSingle from './modules/UploadFile/single'
 import UserFileIndex from './modules/UserFile'
 import UserFileSingle from './modules/UserFile/single'
 
@@ -37,8 +37,8 @@ export default new Vuex.Store({
         EmployeesSingle,
         GroupIndex,
         GroupSingle,
-        UpdateFileIndex,
-        UpdateFileSingle,
+        UploadFileIndex,
+        UploadFileSingle,
         UserFileIndex,
         UserFileSingle
 

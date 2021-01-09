@@ -16,4 +16,11 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+
+    public function testGroupIndex(Request $request){
+        $response = $this->json('GET', '/api/v1/group');
+        $response
+            ->assertStatus(201);
+    } 
+
 }

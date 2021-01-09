@@ -18,9 +18,9 @@
 
                             <bootstrap-alert />
 
-                           <div class="box-body">
+                            <div class="box-body">
                                 <div class="form-group">
-                                    <label for="user">Usuário do arquivo</label>
+                                    <label for="user">Usuario</label>
                                     <v-select
                                             name="user"
                                             label="name"
@@ -29,21 +29,29 @@
                                             :options="companiesAll"
                                             />
                                 </div>
-                                
                                 <div class="form-group">
-                                    <b-form-file
-                                        v-model="file1"
-                                        :state="Boolean(file1)"
-                                        placeholder="Choose a file or drop it here..."
-                                        drop-placeholder="Drop file here..."
-                                        ></b-form-file>
-                                        <div class="mt-3">Selected file: {{ file1 ? file1.name : '' }}</div>
-
-                                        <!-- Plain mode -->
-                                        <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
-                                        <div class="mt-3">Selected file: {{ file2 ? file2.name : '' }}</div>
-                                    </div>
+                                    <label for="name_file">First name</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            name="name_file"
+                                            placeholder="Enter First name"
+                                            :value="item.name_file"
+                                            @input="updateName_file"
+                                            >
                                 </div>
+                                <div class="form-group">
+                                    <label for="url_file">Last name</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            name="url_file"
+                                            placeholder="Enter Last name"
+                                            :value="item.url_file"
+                                            @input="updateUrl_file"
+                                            >
+                                </div>
+                                
                             </div>
 
                             <div class="box-footer">
